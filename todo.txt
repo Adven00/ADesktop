@@ -20,4 +20,4 @@ webwallpaper
 只允许一个instance
 关闭声音
 
-qml写界面，wallpaperplayer继承player
+qml写界面，wallpaperplayer继承player!

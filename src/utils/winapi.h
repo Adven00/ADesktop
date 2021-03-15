@@ -1,4 +1,4 @@
-﻿// https://zhuanlan.zhihu.com/p/37877070
+// https://zhuanlan.zhihu.com/p/37877070
 
 #ifndef WINAPI_H
 #define WINAPI_H
@@ -11,7 +11,7 @@
 HWND GetWorkerW();
 
 namespace WinAPI {
-    void setWidgetBehindIcon(QWidget *widget);
+    void putWidgetBehindIcon(QWidget *widget);
     void hideConsoleWindow();
 }
 

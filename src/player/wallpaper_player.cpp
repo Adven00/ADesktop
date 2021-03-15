@@ -31,7 +31,7 @@ void WallpaperPlayer::playWallpaper()
         output_ = new QVideoWidget(this);
 
         output_->setFullScreen(true);
-        WinAPI::setWidgetBehindIcon(output_);
+        WinAPI::putWidgetBehindIcon(output_);
         player_->setVideoOutput(output_);
 
         output_is_occupied_ = true;

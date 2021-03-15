@@ -1,4 +1,4 @@
-﻿#include "winapi.h"
+#include "winapi.h"
 
 HWND _WORKERW = nullptr;
 
@@ -19,7 +19,7 @@ HWND GetWorkerW()
     return windowHandle;
 }
 
-void WinAPI::setWidgetBehindIcon(QWidget *widget) 
+void WinAPI::putWidgetBehindIcon(QWidget *widget) 
 {
     SetParent((HWND)(widget->winId()), GetWorkerW());
 }
