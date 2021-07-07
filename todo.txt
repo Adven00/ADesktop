@@ -9,15 +9,3 @@ webwallpaper
     文件收纳
     状态监视
     报饼机
-
-引入QGraphics?
-引入QQuick？
-屏幕适配
-测试框架
-
-控制台（视频选择，播放选项等）
-托盘
-只允许一个instance
-关闭声音
-
-qml写界面，wallpaperplayer继承player!
