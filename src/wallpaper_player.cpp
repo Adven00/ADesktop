@@ -14,14 +14,14 @@ WallpaperPlayer::WallpaperPlayer(QWidget *parent) : QWidget(parent)
     QMenu *system_tray_menu_ = new QMenu(this);
     QAction *close = new QAction("Close", system_tray_menu_);
     QAction *play = new QAction("Play", system_tray_menu_);
-    QAction *add_video = new QAction("Add video", system_tray_menu_);
+    QAction *add = new QAction("Add", system_tray_menu_);
     system_tray_menu_->addAction(close);
     system_tray_menu_->addAction(play);
-    system_tray_menu_->addAction(add_video);
+    system_tray_menu_->addAction(add);
 
     connect(close, &QAction::triggered, qApp, &QApplication::quit);
     connect(play, &QAction::triggered, this, &WallpaperPlayer::playWallpaper);
-    connect(add_video, &QAction::triggered, this, &WallpaperPlayer::changeWallpaper);
+    connect(add, &QAction::triggered, this, &WallpaperPlayer::addWallpaper);
 
     system_tray_icon_ = new QSystemTrayIcon(this);
     system_tray_icon_->setIcon(QIcon("../resource/icon.ico"));
@@ -46,12 +46,14 @@ void WallpaperPlayer::playWallpaper()
     player_->play();
 }
 
-void WallpaperPlayer::changeWallpaper()
+void WallpaperPlayer::addWallpaper()
 {
-    QUrl new_media = QFileDialog::getOpenFileUrl(this, 
-                                             "Select a video", 
-                                             QUrl::fromLocalFile("../resource/video"),
-                                             "Videos (*.mkv *.mp4)");
+    QUrl new_media = QFileDialog::getOpenFileUrl(
+        this,
+        "Select a video", 
+        QUrl::fromLocalFile("../resource/video"),
+        "Videos (*.mkv *.mp4)"
+    );
 
     if (!new_media.isEmpty())
     {

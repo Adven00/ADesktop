@@ -25,7 +25,7 @@ public:
 
 public slots:
     void playWallpaper();
-    void changeWallpaper();
+    void addWallpaper();
 
 private:
     bool output_is_occupied_;
