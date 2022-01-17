@@ -6,23 +6,22 @@ WallpaperPlayer::WallpaperPlayer(QWidget *parent) : QWidget(parent)
     output_is_occupied_ = false;
     player_ = new QMediaPlayer(this, QMediaPlayer::VideoSurface);
     list_ = new QMediaPlaylist(this);
-    list_->addMedia(QUrl::fromLocalFile("../resource/video/test1.mp4"));
     list_->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
     player_->setPlaylist(list_);
     player_->setVolume(0);
 
     // system trsy icon
     QMenu *system_tray_menu_ = new QMenu(this);
-    QAction *close = new QAction("close", system_tray_menu_);
-    QAction *play = new QAction("play", system_tray_menu_);
-    QAction *change = new QAction("change", system_tray_menu_);
+    QAction *close = new QAction("Close", system_tray_menu_);
+    QAction *play = new QAction("Play", system_tray_menu_);
+    QAction *add_video = new QAction("Add video", system_tray_menu_);
     system_tray_menu_->addAction(close);
     system_tray_menu_->addAction(play);
-    system_tray_menu_->addAction(change);
+    system_tray_menu_->addAction(add_video);
 
     connect(close, &QAction::triggered, qApp, &QApplication::quit);
     connect(play, &QAction::triggered, this, &WallpaperPlayer::playWallpaper);
-    connect(change, &QAction::triggered, this, &WallpaperPlayer::changeWallpaper);
+    connect(add_video, &QAction::triggered, this, &WallpaperPlayer::changeWallpaper);
 
     system_tray_icon_ = new QSystemTrayIcon(this);
     system_tray_icon_->setIcon(QIcon("../resource/icon.ico"));
@@ -60,7 +59,10 @@ void WallpaperPlayer::changeWallpaper()
         list_->addMedia(new_media);
         player_->setPlaylist(list_);
 
-        delete output_;
-        output_is_occupied_ = false;
+        if (output_is_occupied_)
+        {
+            delete output_;
+            output_is_occupied_ = false;
+        }
     }
 }

@@ -1,5 +1,5 @@
 # ADesktop
-Arknights theme and live wallpaper
+live wallpaper
 
 ## How to build
 
